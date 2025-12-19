@@ -1,1 +1,1169 @@
-<h1>test de invitacion</h1>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self' 'unsafe-inline' https:; connect-src 'self' https:; script-src 'self' 'unsafe-inline' https:; style-src 'self' 'unsafe-inline' https:; font-src 'self' https:; img-src 'self' data: https:;">
+<title>Edwin & Lourdes - Nuestra Boda</title>
+
+<!-- BOOTSTRAP -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- ICONOS -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" crossorigin="anonymous">
+
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Playfair Display', serif;
+        background: linear-gradient(135deg, #f7f4ef 0%, #ffffff 50%, #f0ebe5 100%);
+        color: #3b3b3b;
+        text-align: center;
+        overflow-x: hidden;
+    }
+
+    .hero-section {
+        height: 100vh;
+        background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('photo-1519741497674-611481863552.jpg') center/cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+    }
+
+    .hero-content {
+        color: white;
+        text-align: center;
+        animation: fadeInUp 2s ease-out;
+    }
+
+    .couple-names {
+        font-family: 'Dancing Script', cursive;
+        font-size: 4rem;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    }
+
+    .wedding-date {
+        font-size: 1.5rem;
+        margin-bottom: 30px;
+    }
+
+    .container {
+        max-width: 800px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    .section {
+        margin: 60px 0;
+        padding: 40px 20px;
+        background: rgba(255,255,255,0.9);
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        animation: slideInUp 1s ease-out;
+    }
+
+    .countdown-container {
+        background: linear-gradient(135deg, #c8a951, #d4b866);
+        color: white;
+        padding: 40px;
+        border-radius: 20px;
+        margin: 40px 0;
+        animation: pulse 2s infinite;
+    }
+
+    .countdown-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        margin-top: 20px;
+    }
+
+    .countdown-item {
+        text-align: center;
+    }
+
+    .countdown-number {
+        font-size: 3rem;
+        font-weight: bold;
+        display: block;
+    }
+
+    .countdown-label {
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .calendar-container {
+        background: white;
+        border-radius: 20px;
+        padding: 30px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        margin: 40px 0;
+    }
+
+    .calendar-header {
+        font-size: 2rem;
+        color: #c8a951;
+        margin-bottom: 30px;
+        font-family: 'Dancing Script', cursive;
+    }
+
+    .calendar-grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+
+    .calendar-day {
+        padding: 15px 5px;
+        text-align: center;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+    }
+
+    .calendar-day.header {
+        font-weight: bold;
+        color: #c8a951;
+        background: #f9f7f2;
+    }
+
+    .calendar-day.event {
+        background: #c8a951;
+        color: white;
+        cursor: pointer;
+        transform: scale(1.1);
+        box-shadow: 0 5px 15px rgba(200,169,81,0.4);
+    }
+
+    .calendar-day.event:hover {
+        transform: scale(1.15);
+    }
+
+    .event-details {
+        margin-top: 30px;
+    }
+
+    .card {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        overflow: hidden;
+        margin-bottom: 20px;
+        animation: slideInUp 0.8s ease-out;
+    }
+
+    .card:hover {
+        transform: translateY(-15px) scale(1.02);
+        box-shadow: 0 25px 50px rgba(200,169,81,0.3);
+        border: 2px solid rgba(200,169,81,0.3);
+    }
+
+    .card-img-top {
+        height: 200px;
+        object-fit: cover;
+        border-bottom: 3px solid #c8a951;
+    }
+
+    .card-body {
+        background: linear-gradient(135deg, #f9f7f2, white);
+        padding: 25px;
+    }
+
+    .card-title {
+        color: #c8a951;
+        font-weight: bold;
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .card-title i {
+        font-size: 1.5rem;
+    }
+
+    .card-text {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    .event-time {
+        background: #c8a951;
+        color: white;
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.9rem;
+        font-weight: bold;
+        display: inline-block;
+        margin-bottom: 10px;
+    }
+
+    .event-title {
+        font-size: 1.3rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #3b3b3b;
+    }
+
+    .event-info {
+        color: #666;
+        line-height: 1.6;
+    }
+
+    .location-btn {
+        display: inline-block;
+        margin-top: 15px;
+        padding: 10px 20px;
+        background: #c8a951;
+        color: white;
+        text-decoration: none;
+        border-radius: 25px;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+    }
+
+    .location-btn:hover {
+        background: #b8994a;
+        transform: translateY(-2px);
+    }
+
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin: 40px 0;
+    }
+
+    .gallery-item {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        animation: fadeInUp 1s ease-out;
+    }
+
+    .gallery-item:hover {
+        transform: scale(1.1) rotate(2deg);
+        box-shadow: 0 20px 40px rgba(200,169,81,0.4);
+        border: 3px solid rgba(200,169,81,0.5);
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: 200px;
+        object-fit: cover;
+    }
+
+
+
+    .floating-hearts {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    .heart {
+        position: absolute;
+        color: rgba(200,169,81,0.4);
+        font-size: 25px;
+        animation: floatUp 6s linear infinite;
+        text-shadow: 0 0 10px rgba(200,169,81,0.5);
+    }
+
+    .floating-bubbles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: -1;
+    }
+
+    .bubble {
+        position: absolute;
+        background: radial-gradient(circle, rgba(200,169,81,0.2), rgba(200,169,81,0.05));
+        border: 1px solid rgba(200,169,81,0.3);
+        border-radius: 50%;
+        animation: bubbleFloat 8s linear infinite;
+        box-shadow: 0 0 20px rgba(200,169,81,0.2);
+    }
+
+    .sparkle {
+        position: absolute;
+        color: rgba(200,169,81,0.6);
+        font-size: 15px;
+        animation: sparkleFloat 4s linear infinite;
+        text-shadow: 0 0 8px rgba(200,169,81,0.8);
+    }
+
+    .quote {
+        font-family: 'Dancing Script', cursive;
+        font-size: 1.8rem;
+        color: #c8a951;
+        margin: 40px 0;
+        font-style: italic;
+    }
+
+    .divider {
+        width: 100px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #c8a951, transparent);
+        margin: 40px auto;
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(80px) scale(0.8);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    @keyframes slideInUp {
+        from {
+            opacity: 0;
+            transform: translateY(50px) scale(0.9);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+    }
+
+    @keyframes pulse {
+        0%, 100% { 
+            transform: scale(1);
+            box-shadow: 0 10px 30px rgba(200,169,81,0.3);
+        }
+        50% { 
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(200,169,81,0.5);
+        }
+    }
+
+    @keyframes float {
+        0%, 100% { 
+            transform: translateY(0) rotate(0deg); 
+        }
+        33% { 
+            transform: translateY(-15px) rotate(2deg); 
+        }
+        66% { 
+            transform: translateY(-8px) rotate(-2deg); 
+        }
+    }
+
+    @keyframes spin {
+        from { 
+            transform: rotate(0deg) scale(1); 
+        }
+        50% {
+            transform: rotate(180deg) scale(1.1);
+        }
+        to { 
+            transform: rotate(360deg) scale(1); 
+        }
+    }
+
+    @keyframes floatUp {
+        0% {
+            opacity: 0;
+            transform: translateY(100vh) rotate(0deg) scale(0.5);
+        }
+        10% {
+            opacity: 1;
+            transform: translateY(90vh) rotate(45deg) scale(1);
+        }
+        90% {
+            opacity: 1;
+            transform: translateY(10vh) rotate(315deg) scale(1.2);
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(-10vh) rotate(360deg) scale(0.5);
+        }
+    }
+
+    @keyframes bubbleFloat {
+        0% {
+            opacity: 0;
+            transform: translateY(100vh) translateX(0) scale(0.3);
+        }
+        10% {
+            opacity: 0.8;
+        }
+        50% {
+            transform: translateY(50vh) translateX(20px) scale(1);
+        }
+        90% {
+            opacity: 0.8;
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(-10vh) translateX(-20px) scale(0.3);
+        }
+    }
+
+    @keyframes sparkleFloat {
+        0% {
+            opacity: 0;
+            transform: translateY(100vh) rotate(0deg) scale(0.2);
+        }
+        20% {
+            opacity: 1;
+            transform: translateY(80vh) rotate(90deg) scale(1);
+        }
+        80% {
+            opacity: 1;
+            transform: translateY(20vh) rotate(270deg) scale(1);
+        }
+        100% {
+            opacity: 0;
+            transform: translateY(-10vh) rotate(360deg) scale(0.2);
+        }
+    }
+
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            transform: translateY(0);
+        }
+        40% {
+            transform: translateY(-20px);
+        }
+        60% {
+            transform: translateY(-10px);
+        }
+    }
+
+    .music-controls {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 1000;
+    }
+
+    .music-btn {
+        background: linear-gradient(135deg, #c8a951, #d4b866);
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        transition: all 0.3s ease;
+        animation: float 3s ease-in-out infinite;
+    }
+
+    .music-btn:hover {
+        transform: scale(1.1);
+    }
+
+    .music-btn.playing {
+        animation: spin 2s linear infinite;
+        background: linear-gradient(135deg, #d4b866, #c8a951);
+    }
+
+    @keyframes spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+    }
+
+    .music-player {
+        position: fixed;
+        bottom: 100px;
+        right: 30px;
+        background: white;
+        border-radius: 15px;
+        padding: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        display: none;
+        z-index: 999;
+    }
+
+    .music-player.show {
+        display: block;
+        animation: slideInUp 0.3s ease-out;
+    }
+
+    .heart-signature {
+        display: inline-block;
+        position: relative;
+        width: 500px;
+        height: 500px;
+        margin: 60px 0;
+        animation: heartBeat 2s ease-in-out infinite;
+    }
+
+    .heart-signature::before {
+        content: '♥';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 28rem;
+        color: #dc3545;
+        z-index: 1;
+        text-shadow: 0 0 60px rgba(220,53,69,1);
+    }
+
+    .heart-signature .initials {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -45%);
+        z-index: 2;
+        font-family: 'Dancing Script', cursive;
+        font-weight: bold;
+        font-size: 3.5rem;
+        color: white;
+        text-shadow: 4px 4px 8px rgba(0,0,0,0.9);
+        letter-spacing: 0.2rem;
+    }
+
+    @keyframes heartBeat {
+        0%, 100% {
+            transform: scale(1);
+        }
+        50% {
+            transform: scale(1.1);
+        }
+    }
+
+    .footer {
+        background: linear-gradient(135deg, #3b3b3b, #2a2a2a);
+        color: white;
+        padding: 40px 20px 20px;
+        margin-top: 60px;
+        text-align: center;
+    }
+
+    .footer-content {
+        max-width: 800px;
+        margin: 0 auto;
+    }
+
+    .footer-hearts {
+        font-size: 1.5rem;
+        color: #c8a951;
+        margin-bottom: 20px;
+    }
+
+    .footer-text {
+        font-family: 'Dancing Script', cursive;
+        font-size: 1.2rem;
+        margin-bottom: 15px;
+        color: #f0ebe5;
+    }
+
+    .footer-info {
+        font-size: 0.9rem;
+        color: #ccc;
+        margin-bottom: 20px;
+    }
+
+    .footer-divider {
+        width: 200px;
+        height: 1px;
+        background: linear-gradient(90deg, transparent, #c8a951, transparent);
+        margin: 20px auto;
+    }
+
+    .footer-bottom {
+        font-size: 0.8rem;
+        color: #999;
+        padding-top: 20px;
+        border-top: 1px solid #444;
+    }
+
+    @media (max-width: 768px) {
+        .couple-names {
+            font-size: 2.5rem;
+        }
+        
+        .countdown-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        
+        .calendar-grid {
+            font-size: 0.8rem;
+        }
+        
+        .event-details {
+            grid-template-columns: 1fr;
+        }
+        
+        .footer {
+            padding: 30px 15px 15px;
+        }
+        
+        .event-header {
+            flex-direction: column;
+            text-align: center;
+        }
+        
+        .event-image {
+            width: 50px;
+            height: 50px;
+        }
+        
+        .heart-signature {
+            width: 280px;
+            height: 280px;
+            margin: 40px auto;
+        }
+        
+        .heart-signature::before {
+            font-size: 16rem;
+        }
+        
+        .heart-signature .initials {
+            font-size: 2.2rem;
+        }
+        
+
+    }
+    
+    @media (max-width: 480px) {
+        .heart-signature {
+            width: 220px;
+            height: 220px;
+            margin: 30px auto;
+        }
+        
+        .heart-signature::before {
+            font-size: 12rem;
+        }
+        
+        .heart-signature .initials {
+            font-size: 1.8rem;
+        }
+        
+        .music-controls {
+            bottom: 20px;
+            right: 20px;
+        }
+        
+        .music-btn {
+            width: 50px;
+            height: 50px;
+            font-size: 16px;
+        }
+        
+        .music-player {
+            bottom: 80px;
+            right: 20px;
+            width: 280px;
+        }
+    }
+    
+    @media (max-width: 480px) {
+        .music-controls {
+            bottom: 15px;
+            right: 15px;
+        }
+        
+        .music-btn {
+            width: 45px;
+            height: 45px;
+            font-size: 14px;
+        }
+        
+        .music-player {
+            bottom: 70px;
+            right: 15px;
+            width: 250px;
+        }
+        
+
+    }
+</style>
+</head>
+
+<body>
+
+
+
+<!-- CORAZONES FLOTANTES -->
+<div class="floating-hearts" id="heartsContainer"></div>
+
+<!-- BURBUJAS FLOTANTES -->
+<div class="floating-bubbles" id="bubblesContainer"></div>
+
+<!-- SECCIÓN HERO -->
+<div class="hero-section">
+    <div class="hero-content">
+        <h1 class="couple-names">Edwin & Lourdes</h1>
+        <div class="quote">"Dos corazones, una sola alma"</div>
+    </div>
+</div>
+
+<div class="container">
+
+    <!-- CONTADOR REGRESIVO -->
+    <div class="countdown-container">
+        <h2><i class="fas fa-heart"></i> Faltan</h2>
+        <div class="countdown-grid">
+            <div class="countdown-item">
+                <span class="countdown-number" id="days">0</span>
+                <span class="countdown-label">Días</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="hours">0</span>
+                <span class="countdown-label">Horas</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="minutes">0</span>
+                <span class="countdown-label">Minutos</span>
+            </div>
+            <div class="countdown-item">
+                <span class="countdown-number" id="seconds">0</span>
+                <span class="countdown-label">Segundos</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- CALENDARIO REAL -->
+    <div class="calendar-container">
+        <h2 class="calendar-header"><i class="fas fa-calendar-alt"></i> Enero 2026</h2>
+        <div class="calendar-grid" id="calendar">
+            <!-- El calendario se genera dinámicamente -->
+        </div>
+        
+        <div class="event-details">
+            <div class="row g-4">
+                <!-- 1. Misa Religiosa - 24 Enero 19:00 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <img src="unnamed.gif" class="card-img-top" alt="Iglesia">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-church"></i> Misa Religiosa</h5>
+                            <div class="event-time">24 de Enero - 19:00</div>
+                            <p class="card-text">
+                                Capilla Virgen de Lourdes "La Gruta"<br>
+                                Ceremonia religiosa de matrimonio
+                            </p>
+                            <a href="https://maps.app.goo.gl/2WcKDUrHBhb5aS9j7" class="btn btn-outline-warning" target="_blank">
+                                <i class="fas fa-map-marker-alt"></i> Ver Ubicación
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 2. Recepción - 24 Enero 21:00 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <img src="gigante-illimani.jpg" class="card-img-top" alt="Recepción">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-glass-cheers"></i> Recepción</h5>
+                            <div class="event-time">24 de Enero - 21:00</div>
+                            <p class="card-text">
+                                Salón de eventos "Gigante Illimani"<br>
+                                Calle Brasil #105<br>
+                                ¡Celebremos juntos!
+                            </p>
+                            <a href="https://maps.app.goo.gl/SQjMUkzLTvDbt1YJ9" class="btn btn-outline-warning" target="_blank">
+                                <i class="fas fa-map-marker-alt"></i> Ver Ubicación
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 3. Vals - 24 Enero 22:00 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <img src="au-445_5_84547-171459139159403.webp" class="card-img-top" alt="Vals">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-music"></i> Vals</h5>
+                            <div class="event-time">24 de Enero - 22:00</div>
+                            <p class="card-text">
+                                Primer baile de los novios<br>
+                                Un momento mágico
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 4. Torta - 25 Enero 00:00 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <img src="62787.jpeg" class="card-img-top" alt="Torta">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-birthday-cake"></i> Torta</h5>
+                            <div class="event-time">25 de Enero - 00:00</div>
+                            <p class="card-text">
+                                Corte de la torta nupcial<br>
+                                Dulce momento para compartir
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 5. Fiesta - 25 Enero 02:00 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <img src="fiesta-disco-960x640.webp" class="card-img-top" alt="Fiesta">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-star"></i> Fiesta</h5>
+                            <div class="event-time">25 de Enero - 02:00</div>
+                            <p class="card-text">
+                                ¡La celebración continúa!<br>
+                                Baile y diversión hasta el amanecer
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 6. Misa de Salud - 25 Enero 12:00 -->
+                <div class="col-md-6 col-lg-4">
+                    <div class="card h-100">
+                        <img src="santo-domingo-sucre-7.jpg" class="card-img-top" alt="Misa de Salud">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-cross"></i> Misa de Salud</h5>
+                            <div class="event-time">25 de Enero - 12:00</div>
+                            <p class="card-text">
+                                Parroquia Santo Domingo<br>
+                                Bendición especial para el matrimonio
+                            </p>
+                            <a href="https://maps.app.goo.gl/WMLc9syKtGErRcuW9" class="btn btn-outline-warning" target="_blank">
+                                <i class="fas fa-map-marker-alt"></i> Ver Ubicación
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- GALERÍA DE FOTOS -->
+    <div class="section">
+        <h2><i class="fas fa-images"></i> Nosotros</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="lourdes1.jpg" alt="Compromiso">
+            </div>
+            <div class="gallery-item">
+                <img src="lourdes2.jpg" alt="Juntos">
+            </div>
+        </div>
+    </div>
+
+    <!-- PADRINOS -->
+    <div class="section">
+        <h2><i class="fas fa-users"></i> Nuestros Padrinos</h2>
+        <div class="divider"></div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 30px;">
+            <div style="text-align: center; padding: 20px;">
+                <h3 style="color: #c8a951; margin-bottom: 15px;">Padrinos de Religioso</h3>
+                <p><strong>Daniel Barrientos Chinau</strong><br>
+                Verónica Avalos de Barrientos</p>
+            </div>
+            
+            <div style="text-align: center; padding: 20px;">
+                <h3 style="color: #c8a951; margin-bottom: 15px;">Padrinos de Misa de Salud y civil</h3>
+                <p><strong>Juan Carlos Duran Martínez</strong><br>
+                Julia Gimena Nava de Duran</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- PADRES -->
+    <div class="section">
+        <h2><i class="fas fa-heart"></i> Con la bendición de nuestros padres</h2>
+        <div class="divider"></div>
+        
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 30px;">
+            <div style="text-align: center; padding: 20px;">
+                <h3 style="color: #c8a951; margin-bottom: 15px;">Padres del Novio</h3>
+                <p><strong>Nicolás Puma Zanabria</strong><br>
+                Alejandra Leaños de Puma</p>
+            </div>
+            
+            <div style="text-align: center; padding: 20px;">
+                <h3 style="color: #c8a951; margin-bottom: 15px;">Padres de la Novia</h3>
+                <p><strong>Ernesto Quiroga Díaz</strong><br>
+                Modesta Ávalos Arancibia</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CÓDIGO DE VESTIMENTA -->
+    <div class="section">
+        <h2><i class="fas fa-tshirt"></i> Código de Vestimenta</h2>
+        <div class="divider"></div>
+        
+        <div style="text-align: center; margin: 40px 0;">
+            <img src="formal.png" alt="Código de Vestimenta" style="max-width: 100%; height: auto; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+        </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <p style="font-size: 3rem; color: #c8a951; font-weight: bold; font-style: italic; font-family: 'Dancing Script', cursive; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); letter-spacing: 2px;">
+                "FORMAL"
+            </p>
+        </div>
+    </div>
+
+    <!-- MENSAJE FINAL -->
+    <div class="section">
+        <div class="quote">
+            "Gracias por estar con nosotros este día tan especial.<br>
+            Nos sentimos muy felices de compartir estos momentos con ustedes."
+        </div>
+        <div class="heart-signature">
+            <span class="initials">E y L</span>
+        </div>
+        <p style="margin-top: 20px; color: #666;">Sucre - Enero - 2026</p>
+    </div>
+
+</div>
+
+<!-- CONTROLES DE MÚSICA -->
+<div class="music-controls">
+    <button class="music-btn" id="musicBtn" onclick="toggleMusicPlayer()">
+        <i class="fas fa-music"></i>
+    </button>
+</div>
+
+<!-- MÚSICA DE FONDO -->
+<audio id="backgroundMusic" loop preload="auto">
+    <source src="Sin Bandera - Entra en Mi Vida.mp3" type="audio/mp3">
+</audio>
+
+<!-- PIE DE PÁGINA -->
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-hearts">
+            <i class="fas fa-heart"></i> <i class="fas fa-heart"></i> <i class="fas fa-heart"></i>
+        </div>
+        
+        <div class="footer-text">
+            "El amor verdadero nunca tiene final"
+        </div>
+        
+        <div class="footer-info">
+            <strong>Edwin & Lourdes</strong><br>
+            24 - 25 de Enero 2026<br>
+            Sucre, Bolivia
+        </div>
+        
+        <div class="footer-divider"></div>
+        
+        <div class="footer-bottom">
+            <p><i class="fas fa-envelope"></i> Invitación Digital | <i class="fas fa-calendar-heart"></i> Creada con amor</p>
+            <p>© 2026 - Todos los derechos reservados</p>
+        </div>
+    </div>
+</footer>
+
+
+
+<script>
+    // MÚSICA DE FONDO
+    const music = document.getElementById('backgroundMusic');
+    const musicBtn = document.getElementById('musicBtn');
+    let isPlaying = false;
+
+    function toggleMusicPlayer() {
+        if (!isPlaying) {
+            music.play().then(() => {
+                musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+                musicBtn.classList.add('playing');
+                isPlaying = true;
+            }).catch(e => {
+                console.log('No se puede reproducir:', e);
+                musicBtn.style.display = 'none';
+            });
+        } else {
+            music.pause();
+            musicBtn.innerHTML = '<i class="fas fa-music"></i>';
+            musicBtn.classList.remove('playing');
+            isPlaying = false;
+        }
+    }
+
+    // Intentar reproducir automáticamente después de interacción
+    function startAutoMusic() {
+        music.play().then(() => {
+            musicBtn.innerHTML = '<i class="fas fa-pause"></i>';
+            musicBtn.classList.add('playing');
+            isPlaying = true;
+        }).catch(e => {
+            console.log('Autoplay bloqueado, requiere interacción del usuario');
+        });
+    }
+
+    // CONTADOR REGRESIVO AVANZADO
+    function updateCountdown() {
+        const weddingDate = new Date('2026-01-24T19:00:00').getTime();
+        const now = new Date().getTime();
+        const timeDiff = weddingDate - now;
+
+        const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+
+        document.getElementById('days').textContent = days > 0 ? days : 0;
+        document.getElementById('hours').textContent = hours > 0 ? hours : 0;
+        document.getElementById('minutes').textContent = minutes > 0 ? minutes : 0;
+        document.getElementById('seconds').textContent = seconds > 0 ? seconds : 0;
+    }
+
+    // GENERAR CALENDARIO REAL
+    function generateCalendar() {
+        const calendar = document.getElementById('calendar');
+        const daysOfWeek = ['Dom', 'Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb'];
+        const eventDays = [24, 25];
+
+        // Encabezados de días
+        daysOfWeek.forEach(day => {
+            const dayElement = document.createElement('div');
+            dayElement.className = 'calendar-day header';
+            dayElement.textContent = day;
+            calendar.appendChild(dayElement);
+        });
+
+        // Enero 2026 empieza en miércoles
+        const firstDay = 3; // 0=domingo, 3=miércoles
+        const daysInMonth = 31;
+
+        // Espacios vacíos antes del primer día
+        for (let i = 0; i < firstDay; i++) {
+            const emptyDay = document.createElement('div');
+            emptyDay.className = 'calendar-day';
+            calendar.appendChild(emptyDay);
+        }
+
+        // Días del mes
+        for (let day = 1; day <= daysInMonth; day++) {
+            const dayElement = document.createElement('div');
+            dayElement.className = 'calendar-day';
+            dayElement.textContent = day;
+            
+            if (eventDays.includes(day)) {
+                dayElement.classList.add('event');
+                dayElement.title = day === 24 ? 'Celebración Religiosa' : 'Misa de Salud y Recepción';
+            }
+            
+            calendar.appendChild(dayElement);
+        }
+    }
+
+    // CORAZONES FLOTANTES
+    function createFloatingHeart() {
+        const heart = document.createElement('div');
+        heart.className = 'heart';
+        heart.innerHTML = '♥';
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.animationDuration = (Math.random() * 2 + 4) + 's';
+        heart.style.fontSize = (Math.random() * 15 + 20) + 'px';
+        
+        document.getElementById('heartsContainer').appendChild(heart);
+        
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }
+
+    // BURBUJAS FLOTANTES
+    function createFloatingBubble() {
+        const bubble = document.createElement('div');
+        bubble.className = 'bubble';
+        const size = Math.random() * 60 + 20;
+        bubble.style.width = size + 'px';
+        bubble.style.height = size + 'px';
+        bubble.style.left = Math.random() * 100 + '%';
+        bubble.style.animationDuration = (Math.random() * 4 + 6) + 's';
+        bubble.style.animationDelay = Math.random() * 2 + 's';
+        
+        document.getElementById('bubblesContainer').appendChild(bubble);
+        
+        setTimeout(() => {
+            bubble.remove();
+        }, 10000);
+    }
+
+    // PARTÍCULAS BRILLANTES
+    function createSparkle() {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        sparkle.innerHTML = '✨';
+        sparkle.style.left = Math.random() * 100 + '%';
+        sparkle.style.animationDuration = (Math.random() * 2 + 3) + 's';
+        sparkle.style.fontSize = (Math.random() * 8 + 12) + 'px';
+        
+        document.getElementById('bubblesContainer').appendChild(sparkle);
+        
+        setTimeout(() => {
+            sparkle.remove();
+        }, 5000);
+    }
+
+    // ANIMACIONES AL HACER SCROLL
+    function animateOnScroll() {
+        const sections = document.querySelectorAll('.section');
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                section.style.opacity = '1';
+                section.style.transform = 'translateY(0)';
+            }
+        });
+    }
+
+    // INICIALIZACIÓN
+    document.addEventListener('DOMContentLoaded', function() {
+        generateCalendar();
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        // Animaciones flotantes más frecuentes
+        setInterval(createFloatingHeart, 2000);
+        setInterval(createFloatingBubble, 1500);
+        setInterval(createSparkle, 2500);
+        
+        // Crear algunas partículas iniciales
+        for(let i = 0; i < 5; i++) {
+            setTimeout(createFloatingBubble, i * 500);
+            setTimeout(createFloatingHeart, i * 700);
+            setTimeout(createSparkle, i * 900);
+        }
+        
+        window.addEventListener('scroll', animateOnScroll);
+        animateOnScroll();
+        
+        // Intentar reproducir música después de primera interacción
+        document.addEventListener('click', startAutoMusic, { once: true });
+        document.addEventListener('touchstart', startAutoMusic, { once: true });
+        
+        // Intentar reproducir inmediatamente (puede fallar por políticas del navegador)
+        setTimeout(startAutoMusic, 1000);
+    });
+</script>
+
+<!-- BOOTSTRAP JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+
+</body>
+</html>
